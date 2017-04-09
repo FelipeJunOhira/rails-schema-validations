@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.5'
 # XML params parser
 gem 'actionpack-xml_parser'
 
+# Validations
+gem 'dry-validation'
+
 # Server
 gem 'puma', '~> 3.0'
 
