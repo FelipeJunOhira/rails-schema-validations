@@ -18,6 +18,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 # Views
+gem 'slim'
 gem 'jbuilder', '~> 2.5'
 
 # XML params parser
