@@ -1,0 +1,102 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Schemas test",
+		"_postman_id": "188ec8f9-9e5f-a3ad-c0b3-eb8ff048666e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users - Show",
+			"request": {
+				"url": "localhost:3000/schemas/v2/users/123",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Users - Search (Xml)",
+			"request": {
+				"url": "localhost:3000/schemas/v2/users/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<users-search>\n\t<names>\n\t\t<name>Hey1</name>\n\t\t<name>Hey2</name>\n\t\t<name>Hey3</name>\n\t\t<name>Hey4</name>\n\t</names>\n\t<telephones>\n\t\t<telephone>\n\t\t\t<type>Hey</type>\n\t\t\t<number>123</number>\n\t\t</telephone>\n\t</telephones>\n\t<age>131</age>\n</users-search>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Users - Search (JSON)",
+			"request": {
+				"url": "localhost:3000/schemas/v2/users/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"age\": \"123\",\n\t\"names\": [\n\t\t\" asd \",\n\t\t\"Felipe\"\n\t],\n\t\"telephones\": [\n\t\t{}\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Users - Create (XML)",
+			"request": {
+				"url": "localhost:3000/schemas/v2/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<user>\n\t<name>Bob</name>\n\t<age>123</age>\n\t<created-at>2017-04-09T20:05:53-03:00</created-at>\n\t<address>\n\t\t<street>Rua</street>\n\t\t<city>SP</city>\n\t\t<zipcode>123</zipcode>\n\t\t<telephones>\n\t\t\t<telephone>\n\t\t\t\t<type>true</type>\n\t\t\t\t<number>123</number>\n\t\t\t</telephone>\n\t\t</telephones>\n\t</address>\n</user>"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Users - Create (JSON)",
+			"request": {
+				"url": "localhost:3000/schemas/v2/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": true,\n\t\"age\": \"123\",\n\t\"address\": {\n\t\t\"street\": \"hey\",\n\t\t\"city\": \"SP\",\n\t\t\"zipcode\": \"123\",\n\t\t\"telephones\": [\n\t\t\t{\n\t\t\t\t\"type\": true,\n\t\t\t\t\"number\": \"123\"\n\t\t\t}\n\t\t]\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
