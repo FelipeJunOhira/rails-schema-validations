@@ -4,20 +4,20 @@ class Schemas::V2::Users::CreateSchema < BaseSchema
 
   schema do
 
-    required(:name).filled
+    required(:name, Types::Type).filled
 
-    required(:age).maybe(:int?)
+    required(:age, Types::Int).maybe(:int?)
 
     required(:address).schema do
 
-      required(:street).filled
-      required(:city).filled
-      required(:zipcode).filled
+      required(:street, Types::String).filled
+      required(:city, Types::String).filled
+      required(:zipcode, Types::String).filled
 
-      required(:telephones).each do
+      required(:telephones, Types::Array).each do
         schema do
-          required(:type).filled
-          required(:number).filled
+          required(:type, Types::Type).filled
+          required(:number, Types::Int).filled
         end
       end
 

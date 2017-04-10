@@ -1,12 +1,16 @@
 module Types
   include Dry::Types.module
 
-  Name = Types::String.constructor do |str|
-    str ? str.strip.chomp : str
+  Int = Types::Int.constructor do |int|
+    int.to_i
   end
 
-  Age = Types::Int.constructor do |int|
-    int ? int.to_i : int
+  String = Types::String.constructor do |string|
+    string.to_s
+  end
+
+  DateTime = Types::DateTime.constructor do |date_time|
+    date_time.to_datetime
   end
 
   Array = Types::Array.constructor do |array|

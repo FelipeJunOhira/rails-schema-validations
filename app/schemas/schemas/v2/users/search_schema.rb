@@ -8,14 +8,10 @@ class Schemas::V2::Users::SearchSchema < BaseSchema
       filled? & each(:str?)
     end
 
-    required(:age, Types::Age).filled
-
-    required(:telephones, Types::Array) do
-      filled? & each do
-        schema do
-          required(:type).filled
-          required(:number).filled
-        end
+    required(:telephones, Types::Array).each do
+      schema do
+        required(:type).filled
+        required(:number).filled
       end
     end
 

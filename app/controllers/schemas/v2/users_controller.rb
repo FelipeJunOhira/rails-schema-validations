@@ -5,11 +5,11 @@ class Schemas::V2::UsersController < Schemas::V2::BaseController
   end
 
   def create
-    head :ok
+    render json: params.to_unsafe_hash, status: :ok
   end
 
   def show
-    head :ok
+    render json: params.to_unsafe_hash, status: :ok
   end
 
 end
