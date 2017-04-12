@@ -26,6 +26,7 @@ gem 'actionpack-xml_parser'
 
 # Validations
 gem 'dry-validation'
+gem 'virtus'
 
 # Server
 gem 'puma', '~> 3.0'
