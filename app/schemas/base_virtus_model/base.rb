@@ -1,13 +1,10 @@
-class BaseVirtusModel
+class BaseVirtusModel::Base
 
   include Virtus.model
-  include ActiveModel::Model
+  include ActiveModel::AttributeAssignment
+  include ActiveModel::Validations
 
   class << self
-
-    def root type, &block
-      required :root, type, &block
-    end
 
     def required field, type, options = {}, &block
       options.merge! presence: true
@@ -41,7 +38,7 @@ class BaseVirtusModel
     end
 
     def build_nested_model &block
-      Class.new(BaseVirtusModel).tap do |field_klass|
+      Class.new(BaseVirtusModel::Base).tap do |field_klass|
         field_klass.instance_eval do
           def self.model_name
             ActiveModel::Name.new self, nil, "field"
@@ -54,19 +51,33 @@ class BaseVirtusModel
   end
 
   def initialize data
-    super root: data
+    super(data)
+  rescue NoMethodError
   rescue ActiveModel::UnknownAttributeError
     # Handle errors for extra attributes not declared on the ActiveModel::Model
   end
 
   def valid?
-    attributes_that_respont_to(:valid?).reduce(super) do |result, attributes|
-      self[attributes].valid? && result
-    end
+    to_h
+      .keep_if { |key, value| value.respond_to?(:valid?) }
+      .reduce(super) { |result, (key, value)| value.valid? && result }
   end
 
-  def attributes_that_respont_to method
-    attributes.keys.select { |attribute| self[attribute].respond_to? method }
+  def attributes
+    super
+      .keep_if { |key, value| errors[key].blank? }
+      .transform_values { |value| get_value_attributes(value) }
+  end
+
+  private
+  def get_value_attributes value
+    if value.class.ancestors.include?(BaseVirtusModel::Base)
+      value.attributes
+    elsif value.class.ancestors.include?(Array)
+      value.map { |element| get_value_attributes(element) }
+    else
+      value
+    end
   end
 
 end

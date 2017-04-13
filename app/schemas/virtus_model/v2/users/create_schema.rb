@@ -1,21 +1,25 @@
-class VirtusModel::V2::Users::CreateSchema < BaseVirtusModel
+class VirtusModel::V2::Users::CreateSchema < BaseVirtusModel::Root
 
   # class Size < BaseVirtusModel
   #
   #   required :value, String
   # end
 
-  required :name, String
+  root Hash do
 
-  optional :age, Integer, numericality: { greater_than: 18, less_than: 90 }
+    required :name, String
 
-  required :size, Hash do
-    required :value, Integer, numericality: { only_integer: true }
-  end
+    optional :age, Integer, numericality: { greater_than: 18, less_than: 90 }
 
-  optional :telephones, Array[String], length: { minimum: 2 }
+    # required :size, Hash do
+    #   required :value, Integer, numericality: { only_integer: true }
+    # end
 
-  optional :friends, Array[Hash] do
+    # optional :telephones, Array[String], length: { minimum: 2 }
+
+    optional :friends, Array[Hash] do
+      required :name, String
+    end
 
   end
 
