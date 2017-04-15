@@ -11,5 +11,7 @@ module Schemas
 
     config.eager_load_paths << 'lib/validations'
 
+    config.i18n.default_locale = :'pt-BR'
+
   end
 end

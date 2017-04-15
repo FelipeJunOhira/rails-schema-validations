@@ -1,0 +1,89 @@
+pt-BR:
+  errors:
+    or: "ou"
+    array?: "deve ser um array"
+
+    empty?: "deve estar vazio"
+
+    excludes?: "não deve incluir %{value}"
+
+    excluded_from?:
+      arg:
+        default: "não deve ser um dos: %{list}"
+        range: "não deve ser um dos: %{list_left} - %{list_right}"
+    exclusion?: "não deve ser um dos: %{list}"
+
+    eql?: "deve ser igual a %{left}"
+
+    not_eql?: "não deve ser igual a %{left}"
+
+    filled?: "deve estar presente"
+
+    format?: "está em um formato inválido"
+
+    number?: "deve ser um número"
+
+    odd?: "deve ser impar"
+
+    even?: "deve ser par"
+
+    gt?: "deve ser maior do que %{num}"
+
+    gteq?: "deve ser maior ou igual a %{num}"
+
+    hash?: "deve ser um hash"
+
+    included_in?:
+      arg:
+        default: "deve ser um dos: %{list}"
+        range: "deve ser um dos: %{list_left} - %{list_right}"
+    inclusion?: "deve ser um dos: %{list}"
+
+    includes?: "deve incluir %{value}"
+
+    bool?: "deve ser um boolean"
+
+    true?: "deve ser true"
+
+    false?: "deve ser false"
+
+    int?: "deve ser um integer"
+
+    float?: "deve ser um float"
+
+    decimal?: "deve ser um decimal"
+
+    date?: "deve ser um date"
+
+    date_time?: "deve ser um date time"
+
+    time?: "deve ser um time"
+
+    key?: "está faltando"
+
+    attr?: "está faltando"
+
+    lt?: "deve ser menor do que %{num}"
+
+    lteq?: "deve ser menor ou igual a %{num}"
+
+    max_size?: "tamanho não deve ser maior que %{num}"
+
+    min_size?: "tamanho não deve ser menor que %{num}"
+
+    none?: "não pode estar presente"
+
+    str?: "deve ser uma string"
+
+    type?: "deve ser um %{type}"
+
+    size?:
+      arg:
+        default: "tamanho deve ser %{size}"
+        range: "tamanho deve estar entre %{size_left} - %{size_right}"
+
+      value:
+        string:
+          arg:
+            default: "tamanho deve ser %{size}"
+            range: "tamanho deve estar entre %{size_left} - %{size_right}"

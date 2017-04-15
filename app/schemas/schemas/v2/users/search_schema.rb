@@ -1,19 +1,19 @@
 class Schemas::V2::Users::SearchSchema < BaseSchema
 
-  xml_root_node :users_search
+  root_node :users_search
 
   schema do
 
-    required(:names, Types::Array) do
-      filled? & each(:str?)
-    end
+    required(:names, Types::Array).filled { each(:str?) }
 
-    required(:telephones, Types::Array).each do
+    required(:telephones).each do
       schema do
-        required(:type).filled
-        required(:number).filled
+        required(:type, Types::String).filled
+        required(:number, Types::Int).filled
       end
     end
+
+    validate(filled?: :telephones) { |field| field.present? }
 
   end
 

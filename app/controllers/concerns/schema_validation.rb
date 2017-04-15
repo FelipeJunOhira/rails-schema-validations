@@ -16,10 +16,17 @@ module SchemaValidation
   private
   def schema
     if request.content_type == 'application/xml'
-      schema_class.for_xml(params.to_unsafe_hash)
+      schema_class.for_xml(formatted_parameters)
     else
-      schema_class.for_json(params.to_unsafe_hash)
+      schema_class.for_json(formatted_parameters)
     end
+  end
+
+  def formatted_parameters
+    params
+      .to_unsafe_hash
+      .deep_transform_keys { |key| key.to_s.underscore }
+      .deep_symbolize_keys
   end
 
   def schema_class

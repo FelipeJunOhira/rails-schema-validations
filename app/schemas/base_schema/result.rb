@@ -1,9 +1,11 @@
 class BaseSchema::Result
 
-  attr_reader :result
+  attr_reader :result, :root_node
 
-  def initialize result
+  def initialize result, options = {}
     @result = result
+
+    @root_node = options[:root_node]
   end
 
   def valid?
@@ -11,11 +13,17 @@ class BaseSchema::Result
   end
 
   def output
-    result.output
+    if root_node.present?
+      {
+        root_node => result.output
+      }
+    else
+      result.output
+    end
   end
 
   def full_error_messages
-    format_schema_full_error_messages_for result.messages
+    format_schema_full_error_messages_for result.messages(locale: I18n.locale)
   end
 
   private
